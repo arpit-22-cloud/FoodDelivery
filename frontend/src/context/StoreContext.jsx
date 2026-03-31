@@ -55,7 +55,7 @@ const StoreContextProvider = (props) => {
     // Retrieves saved cart data from the database upon login/refresh 
     const loadCartData = async (token) => {
         const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
-        setCartItems(response.data.cartData);
+        setCartItems(response.data?.cartData || {});
     };
 
     // UseEffect to initialize the app: loads food list and checks for existing tokens 
