@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
-  const url = "http://localhost:4000"; // Centralised backend URL
+  const url = "https://food-delivery-backend.vercel.app"; // Centralised backend URL
 
   return (
     <div>

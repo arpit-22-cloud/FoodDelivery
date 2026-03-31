@@ -12,7 +12,19 @@ const app = express()
 
 // Middleware 
 app.use(express.json()) // Parses incoming requests with JSON payloads 
-app.use(cors()) // Enables Cross-Origin Resource Sharing for frontend access 
+
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL].filter(Boolean)
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error(`CORS policy: origin ${origin} not allowed`))
+    }
+  }
+}
+
+app.use(cors(corsOptions)) // Enables Cross-Origin Resource Sharing for frontend/admin access 
 
 // DB Connection 
 connectDB();

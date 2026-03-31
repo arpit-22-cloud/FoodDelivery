@@ -12,7 +12,7 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("");
 
     // Backend URL used for API calls 
-    const url = "http://localhost:4000";
+    const url = "https://food-delivery-backend.vercel.app";
 
     // Adds an item to the cart and syncs with the database if logged in 
     const addToCart = async (itemId) => {
