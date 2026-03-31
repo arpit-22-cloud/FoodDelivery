@@ -13,7 +13,12 @@ const app = express()
 // Middleware 
 app.use(express.json()) // Parses incoming requests with JSON payloads 
 
-const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL].filter(Boolean)
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL,
+  "http://localhost:5173",
+  "http://localhost:4173"
+].filter(Boolean)
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -21,12 +26,15 @@ const corsOptions = {
     } else {
       callback(new Error(`CORS policy: origin ${origin} not allowed`))
     }
-  }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200
 }
 
-app.use(cors(corsOptions)) // Enables Cross-Origin Resource Sharing for frontend/admin access 
+app.use(cors(corsOptions)) // Enables Cross-Origin Resource Sharing for frontend/admin access
+app.options("*", cors(corsOptions)) // Preflight support for all routes
 
-// DB Connection 
+// DB Connection
 connectDB();
 
 // API Endpoints 
