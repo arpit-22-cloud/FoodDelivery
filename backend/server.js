@@ -17,6 +17,7 @@ app.use(cors()) // Enables Cross-Origin Resource Sharing for frontend access
 
 // DB Connection 
 connectDB();
+app.get('/', (req, res) => res.send('API is working')) 
 
 // API Endpoints 
 app.use("/api/food", foodRouter)
