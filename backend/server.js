@@ -32,7 +32,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions)) // Enables Cross-Origin Resource Sharing for frontend/admin access
-app.options("*", cors(corsOptions)) // Preflight support for all routes
+app.options("/*", cors(corsOptions)) // Preflight support for all routes
 
 // DB Connection
 connectDB();
