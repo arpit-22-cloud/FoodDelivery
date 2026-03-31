@@ -1,0 +1,39 @@
+/* Importing Outfit font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); 
+
+/* Global reset for all HTML elements */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;  
+}
+
+/* Global body styling */
+body {
+  min-height: 100vh; 
+  
+  scroll-behavior: smooth; 
+}
+
+/* Global anchor tag styling */
+a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+/* Main app container configuration */
+.app {
+  width: 80%;
+  margin: auto; 
+}
+
+/* Keyframe for fade-in animations used in components */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} 
